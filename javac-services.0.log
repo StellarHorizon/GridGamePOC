@@ -1,0 +1,70 @@
+WARNING	?	pool-1-thread-1	2016-09-10T03:54:36.680Z	org.javacs.JavaLanguageServer#onError	Can't find configuration file for c:\Users\ztjoh\Documents\Paradigms\GridGame\DrawnFeature.java
+SEVERE	?	pool-1-thread-1	2016-09-10T03:54:38.168Z	org.javacs.Main#lambda$run$0	Can't find configuration file for c:\Users\ztjoh\Documents\Paradigms\GridGame\DrawnFeature.java
+org.javacs.NoJavaConfigException: Can't find configuration file for c:\Users\ztjoh\Documents\Paradigms\GridGame\DrawnFeature.java
+	at org.javacs.JavaLanguageServer.lambda$findCompiler$20(JavaLanguageServer.java:443)
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at org.javacs.JavaLanguageServer.findCompiler(JavaLanguageServer.java:443)
+	at org.javacs.JavaLanguageServer.doHover(JavaLanguageServer.java:764)
+	at org.javacs.JavaLanguageServer$1.hover(JavaLanguageServer.java:106)
+	at io.typefox.lsapi.services.json.LanguageServerToJsonAdapter._doAccept(LanguageServerToJsonAdapter.java:210)
+	at io.typefox.lsapi.services.json.LanguageServerToJsonAdapter.doAccept(LanguageServerToJsonAdapter.java:488)
+	at io.typefox.lsapi.services.json.LanguageServerToJsonAdapter.accept(LanguageServerToJsonAdapter.java:178)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol.handleMessage(LanguageServerProtocol.java:293)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol$IOHandler.handleMessage(LanguageServerProtocol.java:217)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol$IOHandler.run(LanguageServerProtocol.java:123)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol$IOHandler.run(LanguageServerProtocol.java:75)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+WARNING	?	pool-1-thread-1	2016-09-10T03:54:38.168Z	org.javacs.JavaLanguageServer#onError	Can't find configuration file for c:\Users\ztjoh\Documents\Paradigms\GridGame\DrawnFeature.java
+SEVERE	?	pool-1-thread-1	2016-09-10T03:54:48.005Z	org.javacs.Main#lambda$run$0	Can't find configuration file for c:\Users\ztjoh\Documents\Paradigms\GridGame\DrawnFeature.java
+org.javacs.NoJavaConfigException: Can't find configuration file for c:\Users\ztjoh\Documents\Paradigms\GridGame\DrawnFeature.java
+	at org.javacs.JavaLanguageServer.lambda$findCompiler$20(JavaLanguageServer.java:443)
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at org.javacs.JavaLanguageServer.findCompiler(JavaLanguageServer.java:443)
+	at org.javacs.JavaLanguageServer.doHover(JavaLanguageServer.java:764)
+	at org.javacs.JavaLanguageServer$1.hover(JavaLanguageServer.java:106)
+	at io.typefox.lsapi.services.json.LanguageServerToJsonAdapter._doAccept(LanguageServerToJsonAdapter.java:210)
+	at io.typefox.lsapi.services.json.LanguageServerToJsonAdapter.doAccept(LanguageServerToJsonAdapter.java:488)
+	at io.typefox.lsapi.services.json.LanguageServerToJsonAdapter.accept(LanguageServerToJsonAdapter.java:178)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol.handleMessage(LanguageServerProtocol.java:293)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol$IOHandler.handleMessage(LanguageServerProtocol.java:217)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol$IOHandler.run(LanguageServerProtocol.java:123)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol$IOHandler.run(LanguageServerProtocol.java:75)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+WARNING	?	pool-1-thread-1	2016-09-10T03:54:48.005Z	org.javacs.JavaLanguageServer#onError	Can't find configuration file for c:\Users\ztjoh\Documents\Paradigms\GridGame\DrawnFeature.java
+INFO	?	pool-1-thread-1	2016-09-10T03:54:52.941Z	org.javacs.JavaLanguageServer#doLint	Lint c:\Users\ztjoh\Documents\Paradigms\GridGame\Game.java
+SEVERE	?	pool-1-thread-1	2016-09-10T03:54:52.941Z	org.javacs.Main#lambda$run$0	Can't find configuration file for c:\Users\ztjoh\Documents\Paradigms\GridGame\Game.java
+org.javacs.ShowMessageException: Can't find configuration file for c:\Users\ztjoh\Documents\Paradigms\GridGame\Game.java
+	at org.javacs.ShowMessageException.create(ShowMessageException.java:29)
+	at org.javacs.ShowMessageException.warning(ShowMessageException.java:20)
+	at org.javacs.JavaLanguageServer$1.didOpen(JavaLanguageServer.java:184)
+	at io.typefox.lsapi.services.json.LanguageServerToJsonAdapter._doAccept(LanguageServerToJsonAdapter.java:375)
+	at io.typefox.lsapi.services.json.LanguageServerToJsonAdapter.doAccept(LanguageServerToJsonAdapter.java:485)
+	at io.typefox.lsapi.services.json.LanguageServerToJsonAdapter.accept(LanguageServerToJsonAdapter.java:178)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol.handleMessage(LanguageServerProtocol.java:293)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol$IOHandler.handleMessage(LanguageServerProtocol.java:217)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol$IOHandler.run(LanguageServerProtocol.java:123)
+	at io.typefox.lsapi.services.json.LanguageServerProtocol$IOHandler.run(LanguageServerProtocol.java:75)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.javacs.NoJavaConfigException: Can't find configuration file for c:\Users\ztjoh\Documents\Paradigms\GridGame\Game.java
+	at org.javacs.JavaLanguageServer.lambda$findCompiler$20(JavaLanguageServer.java:443)
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at org.javacs.JavaLanguageServer.findCompiler(JavaLanguageServer.java:443)
+	at org.javacs.JavaLanguageServer.doLint(JavaLanguageServer.java:291)
+	at org.javacs.JavaLanguageServer.access$300(JavaLanguageServer.java:25)
+	at org.javacs.JavaLanguageServer$1.didOpen(JavaLanguageServer.java:181)
+	... 12 more
+
