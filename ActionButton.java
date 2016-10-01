@@ -22,10 +22,10 @@ public class ActionButton
 	private Color textColor = Color.YELLOW;
 	
 	private GUIButtonActions buttonAction;
-	private GUIButtonStates buttonState;
+	private GUIButtonStates buttonState, previousState;
 	
 	private boolean isDisabled;
-	private boolean isToggledOn;
+	private boolean isToggleButton, isToggledOn;
 	
 	private Font font;
 	
@@ -52,7 +52,9 @@ public class ActionButton
 	
 	private void initializeButton(String description, Point2D position)
 	{
+		this.previousState = null;
 		this.isDisabled = false;
+		this.isToggleButton = true;
 		this.isToggledOn = false;
 		this.text = description;
 		this.pos = new Point2D(position);
@@ -90,6 +92,21 @@ public class ActionButton
 	{
 		return this.isDisabled;
 	}
+	
+	public void setButtonAction(GUIButtonActions action)
+	{
+		this.buttonAction = action;
+	}
+	public GUIButtonActions getButtonAction()
+	{
+		return this.buttonAction;
+	}
+	
+	public void setIsToggleButton(boolean toggleChoice)
+	{
+		this.isToggleButton = toggleChoice;
+	}
+	
 	public boolean isToggledOn()
 	{
 		return this.isToggledOn;
@@ -97,6 +114,36 @@ public class ActionButton
 	public void setToggledOn(boolean b)
 	{
 		this.isToggledOn = b;
+	}
+	
+	//Called on mouse press while hovering over this button
+	public void startClick()
+	{
+		this.previousState = this.getState();
+		
+		currentImage = buttonImages[4];
+	}
+	
+	//Called if user cancels clicking button (by click and holding button, but releasing outside of button)
+	public void cancelClick()
+	{
+		this.setState(this.previousState);
+	}
+	
+	//Called when mouse released while hovering over this button
+	public void finishClick()
+	{
+		if (this.previousState == GUIButtonStates.ACTIVE)
+			this.setState(GUIButtonStates.NORMAL);
+		else if (this.previousState == GUIButtonStates.NORMAL || this.previousState == GUIButtonStates.HOVER)
+		{
+			ButtonController.doAction(this.buttonAction, this);
+			
+			if (this.isToggleButton)
+				this.setState(GUIButtonStates.ACTIVE);
+			else
+				this.setState(GUIButtonStates.NORMAL);
+		}
 	}
 	
 	public void setPos(ReferencePositions refPoint, int x, int y)
@@ -197,19 +244,21 @@ public class ActionButton
 				currentImage = buttonImages[3];
 				break;
 			case PRESSED:
-				//Before pressing button, see what state currently initializeButton
-				//This allows us to return to and from toggled on state
-				if (buttonState == GUIButtonStates.HOVER)
-					isToggledOn = true; //We are about to toggle on button
-				else if (buttonState == GUIButtonStates.ACTIVE)
-					isToggledOn = false; //We are about to toggle button off (not disabled)
 				currentImage = buttonImages[4];
+//				//Before pressing button, see what state currently initializeButton
+//				//This allows us to return to and from toggled on state
+//				if (buttonState == GUIButtonStates.HOVER)
+//					isToggledOn = true; //We are about to toggle on button
+//				else if (buttonState == GUIButtonStates.ACTIVE)
+//					isToggledOn = false; //We are about to toggle button off (not disabled)
+//				currentImage = buttonImages[4];
 				break;
 			default: //default to disabled button
 				currentImage = buttonImages[1];
 				break;
 		}
 		
+		this.previousState = this.buttonState;
 		this.dimensions = new Point2D(currentImage.getWidth(), currentImage.getHeight());
 		this.buttonState = newState;
 	}

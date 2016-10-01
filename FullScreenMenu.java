@@ -10,6 +10,7 @@ import java.awt.event.MouseWheelEvent;
 public class FullScreenMenu extends DrawnFeature
 {
 	LinkedList<ActionButton> menuButtons;
+	ActionButton currentButton;
 	LinkedList<MenuText> menuTexts;
 	
 	public FullScreenMenu()
@@ -17,6 +18,7 @@ public class FullScreenMenu extends DrawnFeature
 		super(new Rectangle(Game.WIDTH - 1, Game.HEIGHT - 1));
 		menuButtons = new LinkedList<ActionButton>();
 		menuTexts = new LinkedList<MenuText>();
+		this.currentButton = null;
 		
 		//setMainMenu();
 		
@@ -32,8 +34,10 @@ public class FullScreenMenu extends DrawnFeature
 	{	
 		this.menuTexts.add(new MenuText("GRIDGAME", Game.CENTERX, 100, Color.GREEN, Color.BLACK));
 		
-		ActionButton buttonA = new ActionButton("ButtonA", new Point2D(200, 200));
-		ActionButton buttonB = new ActionButton("ButtonB", new Point2D(200, 320));
+		ActionButton buttonA = new ActionButton("Start Game", new Point2D(200, 200));
+		buttonA.setButtonAction(GUIButtonActions.START_GAME);
+		buttonA.setIsToggleButton(false);
+		ActionButton buttonB = new ActionButton("Happy Button", new Point2D(200, 320));
 		
 		this.menuButtons.add(buttonA);
 		this.menuButtons.add(buttonB);
@@ -64,7 +68,9 @@ public class FullScreenMenu extends DrawnFeature
 		for (ActionButton curr : menuButtons)
 			if (curr.isWithin(mousePoint) && !curr.isDisabled())
 			{
-				curr.setState(GUIButtonStates.PRESSED);
+				curr.startClick();
+				this.currentButton = curr;
+				//curr.setState(GUIButtonStates.PRESSED);
 				break;
 			}
 	}
@@ -75,33 +81,43 @@ public class FullScreenMenu extends DrawnFeature
 		
 		Point2D mousePoint = new Point2D(e.getX(), e.getY());
 		
-		for (ActionButton curr : menuButtons)
+		if (this.currentButton != null)
 		{
-			if (curr.isWithin(mousePoint) && curr.getState() == GUIButtonStates.PRESSED && curr.isToggledOn() == true && !curr.isDisabled())
-			{
-				curr.setState(GUIButtonStates.ACTIVE);
-				break;
-			}
-			else if (curr.isWithin(mousePoint) && curr.getState() == GUIButtonStates.PRESSED && curr.isToggledOn() == false && !curr.isDisabled())
-			{
-				curr.setState(GUIButtonStates.HOVER);
-				break;
-			}
-			else if (curr.getState() == GUIButtonStates.PRESSED && !curr.isDisabled())
-			{
-				if (curr.isToggledOn())
-				{
-					curr.setToggledOn(false);
-					curr.setState(GUIButtonStates.NORMAL);
-				}
-				else
-				{
-					curr.setToggledOn(true);
-					curr.setState(GUIButtonStates.ACTIVE);
-				}
-				break;
-			}
+			if (this.currentButton.isWithin(mousePoint))
+				this.currentButton.finishClick();
+			else
+				this.currentButton.cancelClick();
+			
+			this.currentButton = null;
 		}
+		
+//		for (ActionButton curr : menuButtons)
+//		{
+//			if (curr.isWithin(mousePoint) && curr.getState() == GUIButtonStates.PRESSED && curr.isToggledOn() == true && !curr.isDisabled())
+//			{
+//				curr.setState(GUIButtonStates.ACTIVE);
+//				break;
+//			}
+//			else if (curr.isWithin(mousePoint) && curr.getState() == GUIButtonStates.PRESSED && curr.isToggledOn() == false && !curr.isDisabled())
+//			{
+//				curr.setState(GUIButtonStates.HOVER);
+//				break;
+//			}
+//			else if (curr.getState() == GUIButtonStates.PRESSED && !curr.isDisabled())
+//			{
+//				if (curr.isToggledOn())
+//				{
+//					curr.setToggledOn(false);
+//					curr.setState(GUIButtonStates.NORMAL);
+//				}
+//				else
+//				{
+//					curr.setToggledOn(true);
+//					curr.setState(GUIButtonStates.ACTIVE);
+//				}
+//				break;
+//			}
+//		}
 	}
 	
 	public void mouseScroll(MouseWheelEvent e)

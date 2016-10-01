@@ -29,9 +29,11 @@ public class ModelVars
 		{
 			case MAIN_MENU:
 				m.init_MainMenu();
+				this.gameState = GameState.MAIN_MENU;
 				break;
 			case GAME:
 				m.init_Game();
+				this.gameState = GameState.GAME;
 				break;
 			default:
 				break;
