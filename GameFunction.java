@@ -36,7 +36,6 @@ public final class GameFunction
 		URL url = GameFunction.class.getResource(filename);
 		
 		File file = new File(url.toURI());
-		//File file = new File(GameFunction.class.getResourceAsStream(filename));
 		
 		return file;
 	}

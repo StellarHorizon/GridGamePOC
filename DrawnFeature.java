@@ -69,7 +69,6 @@ public abstract class DrawnFeature
 			int relYCoord = (int) (getRelativeCoord(currPos).getY());
 			
 			//Draw this feature and flag it as drawn
-			//g.drawImage(this.image, relXCoord, relYCoord, null);
 			g.drawImage(this.draw(g), relXCoord, relYCoord, null);
 			this.needsRedraw = false;
 		}

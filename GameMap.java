@@ -52,7 +52,6 @@ public class GameMap
 				map = new MapCell[mapCellsWidth][mapCellsHeight];
 				
 				//Load map with file data
-				//Scanner fileReader = new Scanner(new File(filename));
 				Scanner fileReader = new Scanner(GameFunction.loadFile(filename));
 				fileReader.useDelimiter("\\s|\\p{Punct}\\s");	//If commas are used at end of cell descriptions they will not be read
 				
@@ -69,8 +68,6 @@ public class GameMap
 						String toInsert = lineReader.next();
 						while (toInsert.equals(""))
 							toInsert = lineReader.next();
-						
-						//System.out.println("Attempting to save cell: " + currWidth + " " + currHeight + " with the contents: '" + toInsert + "'");
 						
 						map[currWidth][currHeight] = new MapCell(currWidth, currHeight, toInsert, this);
 					}
@@ -101,7 +98,6 @@ public class GameMap
 		
 		System.out.print("Attempting to validate map \"" + filename + "\" from file...   ");
 		
-		//try (Scanner reader = new Scanner(new File(filename)))
 		try (Scanner reader = new Scanner(GameFunction.loadFile(filename)))
 		{
 			String testLine = null;
@@ -229,7 +225,6 @@ public class GameMap
 	/***************************
 	 * Drawing function to draw the game map within the ViewWindow passed as parameters
 	 ***************************/
-	//public void drawView(Graphics g, Point2D screenPos, Point2D windowMapPos, Point2D windowScreenSize, int magnification)
 	public void drawView(Graphics g, Rectangle screenDrawArea, Point2D windowMapPos, int magnification)
 	{
 		Point2D windowScreenSize = new Point2D(screenDrawArea.getWidth(), screenDrawArea.getHeight());

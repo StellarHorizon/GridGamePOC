@@ -21,9 +21,6 @@ class Model
 	GameState gameState;
 	public ModelVars mv;
 	
-	//LinkedList<Sprite> sprites;
-	
-	//String mapFilePath = "map.txt";
 	String mapFilePath = "genMap.txt";
 	GameMap gameMap;
 	
@@ -37,11 +34,6 @@ class Model
 		
 		//Set up basic resources
 		this.rand = new Random(seed);
-		//this.sprites = new LinkedList<Sprite>();
-		
-		//Start on the main menu
-		//gameState = GameState.MAIN_MENU;
-		//mainMenu = new FullScreenMenu();
 		
 		this.mv.setGameState(GameState.MAIN_MENU);
 		

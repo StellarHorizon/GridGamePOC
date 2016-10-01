@@ -37,8 +37,6 @@ class View extends JPanel
 	{
 		this.model = m;
 		
-		//this.background = ImageIO.read(new File ("background.png"));
-		
 		this.window = w;
 		
 		this.currFrame = new BufferedImage(Game.WIDTH - 1, Game.HEIGHT - 1, BufferedImage.TYPE_INT_ARGB);
@@ -59,24 +57,15 @@ class View extends JPanel
 	 ***************************/
 	public void paintComponent(Graphics g)
 	{
-//		try
-//		{
-//			BufferedImage testImage = GameFunction.loadBufferedImage("TestTriangle.png");
-//			g.drawImage(testImage, 50, 50, null);
-//		}
-//		catch (Exception e) { }
-		
 		//Draw the current frame if it is ready (may not be ready when game first starts)
 		if (this.currFrame != null)
 		{
-			//System.out.println("Drawing current frame");
 			g.drawImage(this.currFrame, 0, 0, null);
 		}
 		
 		//Draw next frame if not already doing so
 		if (this.drawingNextFrame == false)
 		{
-			//System.out.println("Drawing next frame");
 			drawNextFrame();
 			this.drawingNextFrame = false;
 			g.drawImage(this.currFrame, 0, 0, null);
@@ -98,7 +87,6 @@ class View extends JPanel
 						nfg.drawImage(model.mv.mainMenu.drawRecurrsive(), 0, 0, null);
 					else
 						nfg.drawImage(model.mv.mainMenu.image, 0, 0, null);
-					//this.currFrame.getGraphics().drawImage(model.mv.mainMenu.drawRecurrsive(), 0, 0, null);
 				}
 				else
 				{

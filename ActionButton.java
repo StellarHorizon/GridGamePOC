@@ -25,7 +25,7 @@ public class ActionButton
 	private GUIButtonStates buttonState, previousState;
 	
 	private boolean isDisabled;
-	private boolean isToggleButton, isToggledOn;
+	private boolean isToggleButton;
 	
 	private Font font;
 	
@@ -55,7 +55,6 @@ public class ActionButton
 		this.previousState = null;
 		this.isDisabled = false;
 		this.isToggleButton = true;
-		this.isToggledOn = false;
 		this.text = description;
 		this.pos = new Point2D(position);
 		this.buttonAction = GUIButtonActions.DO_NOTHING;
@@ -107,15 +106,6 @@ public class ActionButton
 		this.isToggleButton = toggleChoice;
 	}
 	
-	public boolean isToggledOn()
-	{
-		return this.isToggledOn;
-	}
-	public void setToggledOn(boolean b)
-	{
-		this.isToggledOn = b;
-	}
-	
 	//Called on mouse press while hovering over this button
 	public void startClick()
 	{
@@ -139,6 +129,7 @@ public class ActionButton
 		{
 			ButtonController.doAction(this.buttonAction, this);
 			
+			//Set button back to correct state
 			if (this.isToggleButton)
 				this.setState(GUIButtonStates.ACTIVE);
 			else
@@ -245,13 +236,6 @@ public class ActionButton
 				break;
 			case PRESSED:
 				currentImage = buttonImages[4];
-//				//Before pressing button, see what state currently initializeButton
-//				//This allows us to return to and from toggled on state
-//				if (buttonState == GUIButtonStates.HOVER)
-//					isToggledOn = true; //We are about to toggle on button
-//				else if (buttonState == GUIButtonStates.ACTIVE)
-//					isToggledOn = false; //We are about to toggle button off (not disabled)
-//				currentImage = buttonImages[4];
 				break;
 			default: //default to disabled button
 				currentImage = buttonImages[1];
@@ -288,15 +272,16 @@ public class ActionButton
         FontMetrics metrics = g.getFontMetrics();
         int textWidth = metrics.stringWidth(text);
 		int textHeight = metrics.getHeight();
-		//Center text on button
+		
+		//Get positions for text centered on button
 		int textPosX = (int) (this.pos.getX() + this.dimensions.getX() / 2 - textWidth / 2);
 		int textPosY = (int) (this.pos.getY() + this.dimensions.getY() / 2 + textHeight / 2);
 		
-		//Draw button text
-		//Draw shadow text slight off center
+		//Draw shadow of button text slight off center
 		g.setColor(this.shadowColor);
 		g.drawString(this.text, textPosX + 3, textPosY + 3);
-		//Draw text centered
+		
+		//Draw button text centered
 		g.setColor(this.textColor);
 		g.drawString(this.text, textPosX, textPosY);
 		

@@ -46,14 +46,12 @@ class Controller implements MouseListener, MouseWheelListener, MouseMotionListen
 				{
 					if (position.getY() > window.screenDrawArea.getY() && position.getY() < window.screenDrawArea.getY() + window.screenDrawArea.getHeight())
 					{
-						//this.model.click_Map(position);
 						System.out.println("Click started on map");
 						draggingMap = true;
 					}
 				}
 				else
 				{
-					//this.model.click(position);
 					System.out.println("Click started outside map");
 					draggingWindow = true;
 				}
@@ -161,20 +159,16 @@ class Controller implements MouseListener, MouseWheelListener, MouseMotionListen
 				break;
 			case GAME:
 				int keyCode = e.getKeyCode();
-				//System.out.println("KeyCode: " + keyCode);
 				double increment = 20.0;
 				
 				if (keyCode == KeyEvent.VK_UP)
 				{
-					//System.out.println("HEYHHH");
 					window.virtualPos = new Point2D((int)(window.virtualPos.getX() - increment / 2), (int)(window.virtualPos.getY() - increment / 2));
-					//window.viewScreenDimensions = new Point2D((int)(window.viewScreenDimensions.getX() + increment / 2), (int)(window.viewScreenDimensions.getY() + increment / 2));
 					window.setSize(new Point2D((int)(window.getSize().getX() + increment / 2), (int)(window.getSize().getY() + increment / 2)));
 				}
 				else if (keyCode == KeyEvent.VK_DOWN)
 				{
 					window.virtualPos = new Point2D((int)(window.virtualPos.getX() + increment / 2), (int)(window.virtualPos.getY() + increment / 2));
-					//window.viewScreenDimensions = new Point2D((int)(window.viewScreenDimensions.getX() - increment / 2), (int)(window.viewScreenDimensions.getY() - increment / 2));
 					window.setSize(new Point2D((int)(window.getSize().getX() - increment / 2), (int)(window.getSize().getY() - increment / 2)));
 				}
 				break;

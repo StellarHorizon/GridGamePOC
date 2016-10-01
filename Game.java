@@ -47,7 +47,6 @@ public class Game extends JFrame implements ActionListener
 		this.setExtendedState(MAXIMIZED_BOTH);
 		//this.setUndecorated(true);
 		this.setVisible(true);
-		//new Timer(FRAME_RATE, this).start(); // Indirectly calls actionPerformed at regular intervals
 		new Timer((int) (1000.0 / GameConstant.goalFrameRate), this).start(); // Indirectly calls actionPerformed at regular intervals
 	}
 
@@ -64,7 +63,6 @@ public class Game extends JFrame implements ActionListener
 		else
 		{
 			GameDebugVars.frameRate = 1000.0 / (System.currentTimeMillis() - lastFrameTime);
-			//System.out.println("FrameRate: " + GameDebugVars.frameRate);
 			lastFrameTime = System.currentTimeMillis();
 		}
 		

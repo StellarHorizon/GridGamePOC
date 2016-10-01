@@ -42,10 +42,6 @@ class Point2D
 	{
 		this.setX(other.getX());
 		this.setY(other.getY());
-// 		this.dx = other.dx;
-// 		this.dy = other.dy;
-// 		this.lx = other.lx;
-// 		this.ly = other.ly;
 	}
 	
 	/***************************

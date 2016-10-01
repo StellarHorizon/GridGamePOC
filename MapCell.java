@@ -15,17 +15,11 @@ import java.awt.image.BufferedImage;
 public class MapCell
 {
 	//The cell's position on the map
-// 	public static double cellLength = 256.0; //TEMPORARY HARDCODED
-	//public static double cellLength = 50.0; //TEMPORARY HARDCODED
 	private GameMap parent;
 	public static double cellLength = GameConstant.cellLength;
 	private Image currentImage = null;
-	// private static String debugImagePath = "TestTriangle.png"; //To be default image if description doesn't match a cell type
-	// private static String resourcePath[] = {"dirt.png", "grass.jpg", "looserocks.png", "water.jpg"}; //TEMPORARY HARDCODED
-	// private static Image pictures[];
-	// private static Image debugImage;
+
 	public int x, y; //Cell position on map
-	//public int borderSize = 10; //TEMPORARY HARDCODED
 	String description;
 	
 	/***************************
@@ -46,16 +40,15 @@ public class MapCell
 			{
 				if (parent.pictures[i] == null)
 				{
-					parent.pictures[i] = loadImage(parent.resourcePath[i]);
+					parent.pictures[i] = GameFunction.loadBufferedImage(parent.resourcePath[i]);
 					BufferedImage bimg = GameFunction.loadBufferedImage(GameMap.resourcePath[i]);
-					//this.cellLength = bimg.getWidth();
 					System.out.println("Loaded " + parent.resourcePath[i]);
 				}
 			}
 		}
 		
 		if (parent.debugImage == null)
-			parent.debugImage = loadImage(parent.debugImagePath);
+			parent.debugImage = GameFunction.loadBufferedImage(parent.debugImagePath);
 		
 		//Set map cell description
 		this.description = stringDescription;
@@ -96,7 +89,6 @@ public class MapCell
 	 * Getter methods
 	 ***************************/
 	public String getDescription() { return this.description; }
-	//public int getBorderSize() { return this.borderSize; }
 	
 	public Image getImage()
 	{
@@ -120,16 +112,16 @@ public class MapCell
 	 * Utility methods
 	 ***************************/
 	public String print() { return this.description; }
-	
-	
-	//CHANGE TO USE UNIVERSAL FUNCTION! (Also be sure to remember to also set default picture)
-	private Image loadImage(String filename) throws IOException
-	{
-		Image img = GameFunction.loadImage(filename);
-		
-		if (img != null && this.currentImage == null)
-			currentImage = img;
-		
-		return img;
-	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

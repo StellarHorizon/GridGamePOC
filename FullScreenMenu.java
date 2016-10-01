@@ -70,7 +70,6 @@ public class FullScreenMenu extends DrawnFeature
 			{
 				curr.startClick();
 				this.currentButton = curr;
-				//curr.setState(GUIButtonStates.PRESSED);
 				break;
 			}
 	}
@@ -90,34 +89,6 @@ public class FullScreenMenu extends DrawnFeature
 			
 			this.currentButton = null;
 		}
-		
-//		for (ActionButton curr : menuButtons)
-//		{
-//			if (curr.isWithin(mousePoint) && curr.getState() == GUIButtonStates.PRESSED && curr.isToggledOn() == true && !curr.isDisabled())
-//			{
-//				curr.setState(GUIButtonStates.ACTIVE);
-//				break;
-//			}
-//			else if (curr.isWithin(mousePoint) && curr.getState() == GUIButtonStates.PRESSED && curr.isToggledOn() == false && !curr.isDisabled())
-//			{
-//				curr.setState(GUIButtonStates.HOVER);
-//				break;
-//			}
-//			else if (curr.getState() == GUIButtonStates.PRESSED && !curr.isDisabled())
-//			{
-//				if (curr.isToggledOn())
-//				{
-//					curr.setToggledOn(false);
-//					curr.setState(GUIButtonStates.NORMAL);
-//				}
-//				else
-//				{
-//					curr.setToggledOn(true);
-//					curr.setState(GUIButtonStates.ACTIVE);
-//				}
-//				break;
-//			}
-//		}
 	}
 	
 	public void mouseScroll(MouseWheelEvent e)

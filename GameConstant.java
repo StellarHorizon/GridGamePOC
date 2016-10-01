@@ -25,6 +25,5 @@ public class GameConstant
 	public static float scrollSpeed = 10;
 	public static int minCellX = 0, minCellY = 0, maxCellX = 0, maxCellY = 0;
 	public static Point2D winPos;
-	//public static double cellLength;
 	public static int sx1 = 0, sy1 = 0, sx2 = 0, sy2 = 0;
 }
