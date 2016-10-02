@@ -17,15 +17,20 @@ import java.awt.event.MouseWheelEvent;
 class Controller implements MouseListener, MouseWheelListener, MouseMotionListener, KeyListener
 {
 	Model model;
-	ViewWindow window;
+	//ViewWindow window;
 	Point2D mousePos = new Point2D(0,0);
 	boolean draggingMap = false, draggingWindow = false;
 
-	Controller(Model m, ViewWindow w)
+	Controller(Model m)
 	{
 		this.model = m;
-		this.window = w;
 	}
+	
+//	Controller(Model m, ViewWindow w)
+//	{
+//		this.model = m;
+//		this.window = w;
+//	}
 
 	public void mousePressed(MouseEvent e)
 	{
@@ -42,19 +47,19 @@ class Controller implements MouseListener, MouseWheelListener, MouseMotionListen
 				if (e.getButton() == MouseEvent.BUTTON3)
 					this.model.onRightClick(position);
 					
-				if (position.getX() > window.screenDrawArea.getX() && position.getX() < window.screenDrawArea.getX() + window.screenDrawArea.getWidth())
-				{
-					if (position.getY() > window.screenDrawArea.getY() && position.getY() < window.screenDrawArea.getY() + window.screenDrawArea.getHeight())
-					{
-						System.out.println("Click started on map");
-						draggingMap = true;
-					}
-				}
-				else
-				{
-					System.out.println("Click started outside map");
-					draggingWindow = true;
-				}
+//				if (position.getX() > window.screenDrawArea.getX() && position.getX() < window.screenDrawArea.getX() + window.screenDrawArea.getWidth())
+//				{
+//					if (position.getY() > window.screenDrawArea.getY() && position.getY() < window.screenDrawArea.getY() + window.screenDrawArea.getHeight())
+//					{
+//						System.out.println("Click started on map");
+//						draggingMap = true;
+//					}
+//				}
+//				else
+//				{
+//					System.out.println("Click started outside map");
+//					draggingWindow = true;
+//				}
 				break;
 			default:
 				break;
@@ -91,10 +96,10 @@ class Controller implements MouseListener, MouseWheelListener, MouseMotionListen
 				model.mv.mainMenu.mouseScroll(e);
 				break;
 			case GAME:
-				if (e.getWheelRotation() < 0 && this.window.magnification < 50)
-					this.window.magnification += 2;
-				else if (e.getWheelRotation() > 0 && this.window.magnification > 4)
-					this.window.magnification -= 2;
+//				if (e.getWheelRotation() < 0 && this.window.magnification < 50)
+//					this.window.magnification += 2;
+//				else if (e.getWheelRotation() > 0 && this.window.magnification > 4)
+//					this.window.magnification -= 2;
 				break;
 			default:
 				break;
@@ -109,23 +114,23 @@ class Controller implements MouseListener, MouseWheelListener, MouseMotionListen
 				model.mv.mainMenu.mouseDrag(e);
 				break;
 			case GAME:
-				//Mouse drag amount
-				Point2D dragAmount = new Point2D((e.getX() - mousePos.getX()), (e.getY() - mousePos.getY()));
-				
-				//If panning window, factor in the current magnification to drag amount
-				if (draggingMap)
-				{
-					dragAmount = new Point2D((e.getX() - mousePos.getX()) / (this.window.magnification / 10.0), (e.getY() - mousePos.getY()) / (this.window.magnification / 10.0));
-					this.window.panWindow(dragAmount);
-				}
-				//If moving window around, magnification is not factored in
-				else
-				{
-					Point2D newWindowPos = new Point2D(window.screenDrawArea.getX() + dragAmount.getX(), window.screenDrawArea.getY() + dragAmount.getY());
-					this.window.setPos(newWindowPos);
-				}
-				
-				this.mousePos = new Point2D(e.getX(), e.getY());
+//				//Mouse drag amount
+//				Point2D dragAmount = new Point2D((e.getX() - mousePos.getX()), (e.getY() - mousePos.getY()));
+//				
+//				//If panning window, factor in the current magnification to drag amount
+//				if (draggingMap)
+//				{
+//					dragAmount = new Point2D((e.getX() - mousePos.getX()) / (this.window.magnification / 10.0), (e.getY() - mousePos.getY()) / (this.window.magnification / 10.0));
+//					this.window.panWindow(dragAmount);
+//				}
+//				//If moving window around, magnification is not factored in
+//				else
+//				{
+//					Point2D newWindowPos = new Point2D(window.screenDrawArea.getX() + dragAmount.getX(), window.screenDrawArea.getY() + dragAmount.getY());
+//					this.window.setPos(newWindowPos);
+//				}
+//				
+//				this.mousePos = new Point2D(e.getX(), e.getY());
 				break;
 			default:
 				break;
@@ -163,13 +168,13 @@ class Controller implements MouseListener, MouseWheelListener, MouseMotionListen
 				
 				if (keyCode == KeyEvent.VK_UP)
 				{
-					window.virtualPos = new Point2D((int)(window.virtualPos.getX() - increment / 2), (int)(window.virtualPos.getY() - increment / 2));
-					window.setSize(new Point2D((int)(window.getSize().getX() + increment / 2), (int)(window.getSize().getY() + increment / 2)));
+//					window.virtualPos = new Point2D((int)(window.virtualPos.getX() - increment / 2), (int)(window.virtualPos.getY() - increment / 2));
+//					window.setSize(new Point2D((int)(window.getSize().getX() + increment / 2), (int)(window.getSize().getY() + increment / 2)));
 				}
 				else if (keyCode == KeyEvent.VK_DOWN)
 				{
-					window.virtualPos = new Point2D((int)(window.virtualPos.getX() + increment / 2), (int)(window.virtualPos.getY() + increment / 2));
-					window.setSize(new Point2D((int)(window.getSize().getX() - increment / 2), (int)(window.getSize().getY() - increment / 2)));
+//					window.virtualPos = new Point2D((int)(window.virtualPos.getX() + increment / 2), (int)(window.virtualPos.getY() + increment / 2));
+//					window.setSize(new Point2D((int)(window.getSize().getX() - increment / 2), (int)(window.getSize().getY() - increment / 2)));
 				}
 				break;
 			default:
