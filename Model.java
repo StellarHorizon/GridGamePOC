@@ -21,8 +21,8 @@ class Model
 	GameState gameState;
 	public ModelVars mv;
 	
-	String mapFilePath = "genMap.txt";
-	GameMap gameMap;
+	//String mapFilePath = "genMap.txt";
+	//GameMap gameMap;
 	
 	/***************************
 	 * Constructor
@@ -37,7 +37,7 @@ class Model
 		
 		this.mv.setGameState(GameState.MAIN_MENU);
 		
-		this.gameMap = new GameMap(mapFilePath);
+		//this.gameMap = new GameMap(mapFilePath);
 	}
 
 	/***************************
@@ -47,19 +47,39 @@ class Model
 	{
 		mv.mainMenu = new FullScreenMenu();
 	}
-
-	/***************************
-	 * Unimplemented functions
-	 ***************************/
 	 
 	 /***************************
 	 * Called when game state changes to the game
 	 ***************************/
 	public void init_Game()
 	{
+		
 		return;
 	}
-	 
+	
+	/***************************
+	 * Called when game is changing states
+	 * Allows model to gain control before the resources are disposed of
+	 * Returns false to cancel the state change, true otherwise
+	 ***************************/
+	public boolean leaveCurrentState()
+	{
+		//No special behavior needed yet
+		return true;
+	}
+	
+	//Called by ModelVar class after variables initialized
+	public void initGameState()
+	{
+		switch (mv.getGameState())
+		{
+			case MAIN_MENU:
+				init_MainMenu();
+			case GAME:
+				init_Game();
+		}
+	}
+	
 	//Update function called on each tick
 	public void update()
 	{

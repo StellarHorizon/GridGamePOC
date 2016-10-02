@@ -22,7 +22,6 @@ import java.awt.image.*;
 class View extends JPanel
 {
 	Model model;
-	//ViewWindow window;
 	BufferedImage currFrame, nextFrame;
 	
 	//Tracking variable to allow only one instance of painting next frame at a time
@@ -38,18 +37,8 @@ class View extends JPanel
 	{
 		this.model = m;
 		
-		//this.window = w;
-		
 		this.currFrame = new BufferedImage(Game.WIDTH - 1, Game.HEIGHT - 1, BufferedImage.TYPE_INT_ARGB);
 	}
-//	View(Model m, ViewWindow w) throws IOException
-//	{
-//		this.model = m;
-//		
-//		//this.window = w;
-//		
-//		this.currFrame = new BufferedImage(Game.WIDTH - 1, Game.HEIGHT - 1, BufferedImage.TYPE_INT_ARGB);
-//	}
 	
 	/***************************
 	 * Constructor
@@ -108,6 +97,10 @@ class View extends JPanel
 				nfg.setColor(Color.BLACK);
 				nfg.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 				
+				for (Sprite curr : this.model.mv.gameSprites)
+				{
+					curr.draw(nfg);
+				}
 				//this.window.draw(nfg);
 				
 //				nfg.setColor(Color.WHITE);

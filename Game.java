@@ -14,7 +14,6 @@ import java.io.IOException;
 public class Game extends JFrame implements ActionListener
 {
 	Model model;
-	//ViewWindow window;
 	ButtonController buttonController;
 	
 	public static int WIDTH = 2700;
@@ -30,11 +29,8 @@ public class Game extends JFrame implements ActionListener
 	public Game() throws Exception
 	{
 		this.model = new Model();
-		//this.window = new ViewWindow(this.model);
 		this.buttonController = new ButtonController(this.model);
-		//Controller controller = new Controller(this.model, this.window);
 		Controller controller = new Controller(this.model);
-		//View view = new View(this.model, this.window);
 		View view = new View(this.model);
 		view.addMouseListener(controller);
 		view.addMouseMotionListener(controller);
