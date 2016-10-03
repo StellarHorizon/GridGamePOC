@@ -22,7 +22,6 @@ import java.awt.image.*;
 class View extends JPanel
 {
 	Model model;
-	ViewWindow window;
 	BufferedImage currFrame, nextFrame;
 	
 	//Tracking variable to allow only one instance of painting next frame at a time
@@ -33,11 +32,10 @@ class View extends JPanel
 	/***************************
 	 * Constructor
 	 ***************************/
-	View(Model m, ViewWindow w) throws IOException
+	
+	View(Model m) throws IOException
 	{
 		this.model = m;
-		
-		this.window = w;
 		
 		this.currFrame = new BufferedImage(Game.WIDTH - 1, Game.HEIGHT - 1, BufferedImage.TYPE_INT_ARGB);
 	}
@@ -76,7 +74,7 @@ class View extends JPanel
 		this.drawingNextFrame = true;
 		
 		this.nextFrame = new BufferedImage(Game.WIDTH - 1, Game.HEIGHT - 1, BufferedImage.TYPE_INT_ARGB);
-		Graphics nfg = nextFrame.getGraphics();
+		Graphics2D nfg = (Graphics2D) nextFrame.getGraphics();
 		
 		switch (model.mv.getGameState())
 		{
@@ -99,14 +97,18 @@ class View extends JPanel
 				nfg.setColor(Color.BLACK);
 				nfg.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 				
-				this.window.draw(nfg);
+				for (Sprite curr : this.model.mv.gameSprites)
+				{
+					curr.draw(nfg);
+				}
+				//this.window.draw(nfg);
 				
-				nfg.setColor(Color.WHITE);
-				nfg.drawString("Magnification: " + this.window.magnification / 10 + "." + this.window.magnification % 10 + "x", 15, 15);
-				nfg.drawString("sourceMin: (" + GameConstant.sx1 + ", " + GameConstant.sy1 + ")", 15, 35);
-				nfg.drawString("sourceMax: (" + GameConstant.sx2 + ", " + GameConstant.sy2 + ")", 15, 55);
-				nfg.drawString("FPS: " + GameDebugVars.frameRate, 15, 75);
-				nfg.drawString("PPS: " + GameDebugVars.paintsPerSecond, 15, 95);
+//				nfg.setColor(Color.WHITE);
+//				nfg.drawString("Magnification: " + this.window.magnification / 10 + "." + this.window.magnification % 10 + "x", 15, 15);
+//				nfg.drawString("sourceMin: (" + GameConstant.sx1 + ", " + GameConstant.sy1 + ")", 15, 35);
+//				nfg.drawString("sourceMax: (" + GameConstant.sx2 + ", " + GameConstant.sy2 + ")", 15, 55);
+//				nfg.drawString("FPS: " + GameDebugVars.frameRate, 15, 75);
+//				nfg.drawString("PPS: " + GameDebugVars.paintsPerSecond, 15, 95);
 				break;
 			default:
 				break;

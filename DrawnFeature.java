@@ -13,6 +13,7 @@ public abstract class DrawnFeature
 	public LinkedList<DrawnFeature> preDrawnFeatures; //children features drawn before this feature (no specific order)
 	public LinkedList<DrawnFeature> postDrawnFeatures; //children features drawn after this feature (no specific order)
 	public boolean needsRedraw = true;
+	public boolean isRecursiveDrawn = false;
 	
 	//Constructor
 	public DrawnFeature(Rectangle drawArea)

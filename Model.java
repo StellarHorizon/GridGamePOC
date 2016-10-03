@@ -14,15 +14,9 @@ import java.io.File;
 import java.awt.Color;
 
 class Model
-{	
-	Random rand;
-	int seed = GameConstant.gameSeed; //Old value is 10
+{
 	int tick = 0;
-	GameState gameState;
 	public ModelVars mv;
-	
-	String mapFilePath = "genMap.txt";
-	GameMap gameMap;
 	
 	/***************************
 	 * Constructor
@@ -33,11 +27,11 @@ class Model
 		this.mv = new ModelVars(this);
 		
 		//Set up basic resources
-		this.rand = new Random(seed);
+		this.mv.rand = new Random(mv.seed);
 		
 		this.mv.setGameState(GameState.MAIN_MENU);
 		
-		this.gameMap = new GameMap(mapFilePath);
+		//this.gameMap = new GameMap(mapFilePath);
 	}
 
 	/***************************
@@ -47,19 +41,42 @@ class Model
 	{
 		mv.mainMenu = new FullScreenMenu();
 	}
-
-	/***************************
-	 * Unimplemented functions
-	 ***************************/
 	 
 	 /***************************
 	 * Called when game state changes to the game
 	 ***************************/
 	public void init_Game()
 	{
+		Sprite testSprite = new Sprite(new Point2D(Game.CENTERX, Game.CENTERY));
+		mv.gameSprites.add(testSprite);
 		return;
 	}
-	 
+	
+	/***************************
+	 * Called when game is changing states
+	 * Allows model to gain control before the resources are disposed of
+	 * Returns false to cancel the state change, true otherwise
+	 ***************************/
+	public boolean leaveCurrentState()
+	{
+		//No special behavior needed yet
+		return true;
+	}
+	
+	//Called by ModelVar class after variables initialized
+	public void initGameState()
+	{
+		switch (mv.getGameState())
+		{
+			case MAIN_MENU:
+				init_MainMenu();
+				break;
+			case GAME:
+				init_Game();
+				break;
+		}
+	}
+	
 	//Update function called on each tick
 	public void update()
 	{
