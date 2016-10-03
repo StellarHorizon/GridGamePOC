@@ -74,7 +74,7 @@ class View extends JPanel
 		this.drawingNextFrame = true;
 		
 		this.nextFrame = new BufferedImage(Game.WIDTH - 1, Game.HEIGHT - 1, BufferedImage.TYPE_INT_ARGB);
-		Graphics nfg = nextFrame.getGraphics();
+		Graphics2D nfg = (Graphics2D) nextFrame.getGraphics();
 		
 		switch (model.mv.getGameState())
 		{

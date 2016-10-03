@@ -1,3 +1,13 @@
+/***************************
+ * Purpose: ModelVars class to contain primary variables of
+ * the model class. Note that functionality in this class is
+ * oriented towards managing variables themselves; the model
+ * handles behavior of the variables, and may add to and remove
+ * from lists.
+ *
+ * Original Author: Zachary Johnson
+ ***************************/
+
 import java.util.LinkedList;
 
 public class ModelVars
@@ -13,9 +23,14 @@ public class ModelVars
 	}
 	
 	/***************************
-	 * MAIN MENU Public Variables
+	 * General Public Variables
 	 ***************************/
 	public Model m;
+	
+	
+	/***************************
+	 * MAIN MENU Public Variables
+	 ***************************/
 	public FullScreenMenu mainMenu;
 	
 	
@@ -53,8 +68,6 @@ public class ModelVars
 				break;
 			case GAME:
 				this.gameSprites = new LinkedList<Sprite>();
-				Sprite testSprite = new Sprite(new Point2D(300, 300));
-				gameSprites.add(testSprite);
 				break;
 			default:
 				break;

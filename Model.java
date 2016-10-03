@@ -53,7 +53,8 @@ class Model
 	 ***************************/
 	public void init_Game()
 	{
-		
+		Sprite testSprite = new Sprite(new Point2D(300, 300));
+		mv.gameSprites.add(testSprite);
 		return;
 	}
 	
@@ -75,8 +76,10 @@ class Model
 		{
 			case MAIN_MENU:
 				init_MainMenu();
+				break;
 			case GAME:
 				init_Game();
+				break;
 		}
 	}
 	

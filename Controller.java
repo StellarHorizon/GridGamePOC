@@ -17,7 +17,7 @@ import java.awt.event.MouseWheelEvent;
 class Controller implements MouseListener, MouseWheelListener, MouseMotionListener, KeyListener
 {
 	Model model;
-	Point2D mousePos = new Point2D(0,0);
+	public static Point2D mousePos = new Point2D(0,0);
 	boolean draggingMap = false, draggingWindow = false;
 
 	Controller(Model m)
