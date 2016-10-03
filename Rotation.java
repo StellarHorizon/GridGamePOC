@@ -26,6 +26,7 @@ public class Rotation
 		validateRotation();
 	}
 	
+	//Returns the current rotation in degrees
 	public double getRotation()
 	{
 		return this.rotation;

@@ -14,15 +14,9 @@ import java.io.File;
 import java.awt.Color;
 
 class Model
-{	
-	Random rand;
-	int seed = GameConstant.gameSeed; //Old value is 10
+{
 	int tick = 0;
-	GameState gameState;
 	public ModelVars mv;
-	
-	//String mapFilePath = "genMap.txt";
-	//GameMap gameMap;
 	
 	/***************************
 	 * Constructor
@@ -33,7 +27,7 @@ class Model
 		this.mv = new ModelVars(this);
 		
 		//Set up basic resources
-		this.rand = new Random(seed);
+		this.mv.rand = new Random(mv.seed);
 		
 		this.mv.setGameState(GameState.MAIN_MENU);
 		
@@ -53,7 +47,7 @@ class Model
 	 ***************************/
 	public void init_Game()
 	{
-		Sprite testSprite = new Sprite(new Point2D(300, 300));
+		Sprite testSprite = new Sprite(new Point2D(Game.CENTERX, Game.CENTERY));
 		mv.gameSprites.add(testSprite);
 		return;
 	}

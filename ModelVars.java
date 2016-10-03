@@ -9,6 +9,7 @@
  ***************************/
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class ModelVars
 {
@@ -26,6 +27,8 @@ public class ModelVars
 	 * General Public Variables
 	 ***************************/
 	public Model m;
+	Random rand;
+	int seed = GameConstant.gameSeed; //Old value is 10
 	
 	
 	/***************************
@@ -85,6 +88,7 @@ public class ModelVars
 	 * GAME Public Variables
 	 ***************************/
 	LinkedList<Sprite> gameSprites;
+	SpaceShip playerShip;
 	
 	/***************************
 	 * GAME Private Variables
