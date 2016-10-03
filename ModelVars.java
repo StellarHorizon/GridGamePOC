@@ -19,29 +19,29 @@ public class ModelVars
 	public ModelVars(Model model)
 	{
 		this.m = model;
-		
+
 		this.gameState = GameState.MAIN_MENU;
 	}
-	
+
 	/***************************
 	 * General Public Variables
 	 ***************************/
 	public Model m;
 	Random rand;
 	int seed = GameConstant.gameSeed; //Old value is 10
-	
-	
+
+
 	/***************************
 	 * MAIN MENU Public Variables
 	 ***************************/
 	public FullScreenMenu mainMenu;
-	
-	
+
+
 	/***************************
 	 * MAIN MENU Private Variables
 	 ***************************/
 	private GameState gameState;
-	
+
 	public GameState getGameState() { return gameState; }
 	public void setGameState(GameState newState)
 	{
@@ -49,7 +49,7 @@ public class ModelVars
 		//Model can cancel state change by returning false
 		if (!m.leaveCurrentState())
 			return;
-		
+
 		//Dispose of resources for current state
 		switch (gameState)
 		{
@@ -62,7 +62,7 @@ public class ModelVars
 			default:
 				break;
 		}
-		
+
 		//Initialize resources for new state
 		switch (newState)
 		{
@@ -75,42 +75,22 @@ public class ModelVars
 			default:
 				break;
 		}
-		
+
 		//Change the GameState
 		this.gameState = newState;
-		
+
 		//Inform model to prepare any resources
 		m.initGameState();
 	}
-	
-	
+
+
 	/***************************
 	 * GAME Public Variables
 	 ***************************/
 	LinkedList<Sprite> gameSprites;
 	SpaceShip playerShip;
-	
+
 	/***************************
 	 * GAME Private Variables
 	 ***************************/
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
